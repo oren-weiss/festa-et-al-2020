@@ -50,7 +50,8 @@ function read_surrori_monyet()
     df[!,:electrode] .= UInt8(1)
     sname = name_of_session_monyet(fname)
     df[!,:session] .= sname
-    categorical!(df,[:session,:contrast,:oriS]; compress = true)
+    transform!(df, [:session,:contrast,:oriS] .=> categorical .=> [:session,:contrast,:oriS])
+    # categorical!(df,[:session,:contrast,:oriS]; compress = true)
     @info "file completed"
     return df
   end

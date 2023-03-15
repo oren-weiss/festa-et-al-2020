@@ -4,6 +4,7 @@ using Plots, NamedColors
 using Serialization
 using Statistics,StatsBase
 using DataFrames, DataFramesMeta
+using CategoricalArrays
 
 ## load data from .mat files, convert to object
 
@@ -22,7 +23,7 @@ const kthresh= 1.0
 const k_latency = 1.0
 const min_latency = 40E-3
 const max_latency = 90E-3
-const sizes = F.get_sizes(dataspikes_cadet)
+# const sizes = F.get_sizes(dataspikes_cadet)
 const window_stim = window_spk
 const window_blank = window_0
 
@@ -90,8 +91,8 @@ data_spikecounts = let dfc=deepcopy(data_spikecounts_cadet),
   dfc[!,:contrast] .= 1.0
   vcat(dfc,dfm)
 end
-
-categorical!(data_spikecounts,:contrast)
+transform!(data_spikecounts, :contrast => categorical => :contrast)
+# categorical!(data_spikecounts,:contrast)
 
 data_spikecounts_series = let dat=data_spikecounts,
     df =  F.define_series_surrori(data_spikecounts;

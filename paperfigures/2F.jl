@@ -74,12 +74,12 @@ plt = let dat=data_pop,
   p=plot(title="Data, natural area summation curve, N = $nneus" ,
       xlabel="stimulus  size relative to RF" , ylims=(0,1.6))
   xplot = dat.size
-  plot!(p, xplot, dat.mean; ribbon=[dat.mean_ddown,dat.mean_dup],
+  plot!(p, xplot, dat.mean; ribbon=(dat.mean_ddown,dat.mean_dup),
     linewidth=3, marker=:diamond , label="mean spike count (normalized)",
     ylims=(0,1.2), xlims=(0.3,10),  xscale=:log10,
     color=colorant"DarkGreen")
   plot!(twinx(p), xplot, dat.geomean;
-    ribbon= [dat.geomean_ddown,dat.geomean_dup],
+    ribbon= (dat.geomean_ddown,dat.geomean_dup),
     linewidth=3, marker=:diamond , label="geomean FF",legend=:topleft,
     color=:blue , ylims = (0.9,1.7) ,xlims=(0.3,10),  xscale=:log10)
 end

@@ -1,8 +1,7 @@
 using FestaetalLib; const F=FestaetalLib
 using Plots, NamedColors
 using Serialization
-using Dates ; date2str() = Dates.format(now(),"yyyymmdd")
-using Statistics
+using Dates 
 using DataFrames, DataFramesMeta
 
 # function to plot one or more black/white images

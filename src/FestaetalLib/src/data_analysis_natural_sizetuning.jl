@@ -58,7 +58,8 @@ function SpikingData_natural_sizetuning()
     return binarybinformat(df_spiketimes,time_bins)
   end
   spikes = vcat(datadfs...)
-  categorical!(spikes,:session;compress=true)
+  transform!(spikes,:session => categorical => :session)
+  # categorical!(spikes,:session;compress=true)
   time_stim = 0.0
   times=midpoints(time_bins)
   # read the views
