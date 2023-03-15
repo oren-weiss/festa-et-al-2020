@@ -2,6 +2,7 @@ using FestaetalLib; const F=FestaetalLib
 using Plots, NamedColors
 using Serialization
 using Dates 
+using Statistics
 using DataFrames, DataFramesMeta
 
 # function to plot one or more black/white images
